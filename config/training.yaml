@@ -1,0 +1,26 @@
+training:
+  gamma: 0.995             # Section 5: Increased from 0.99 for long-horizon coordination
+  lr: 0.0001               # Section 5: Reduced from 0.0003 for stability with AirSim dynamics
+  lambda: 0.95
+  kl_coeff: 0.2
+  clip_param: 0.2
+  vf_loss_coeff: 1.0
+  entropy_coeff: 0.01      # TODO: Consider entropy schedule (start higher, decay)
+  grad_clip: 0.5           # Section 5: Reduced from 10.0 for better gradient stability
+  
+  train_batch_size: 8000   # Section 5: Increased from 4000 for swarm variance
+  sgd_minibatch_size: 256
+  num_sgd_iter: 10
+  total_timesteps: 5000000 # Total environment steps to train for
+  
+  rollout_fragment_length: 50 # Reduced from 200 to handle short episodes with collisions
+  
+evaluation:
+  evaluation_interval: 10 # iterations
+  evaluation_duration: 5
+  evaluation_duration_unit: "episodes"
+
+runners:
+  num_env_runners: 0 # Must be 0 for single AirSim instance (uses local worker)
+  num_cpus_per_worker: 1
+  sample_timeout_s: 180

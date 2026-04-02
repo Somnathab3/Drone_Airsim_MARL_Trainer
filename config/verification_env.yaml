@@ -1,0 +1,57 @@
+env:
+  num_agents: 1  # Modified
+  agent_name_prefix: "Drone"
+  max_steps: 100
+  sim_dt: 0.05
+  ip: "127.0.0.1"
+  port: 41451
+  curriculum_2d_mode: false
+  use_pid_assist: true
+  pid_blend_weight: 0.3
+  action_frequency: 1
+  use_simplified_actions: false
+  use_global_planner: false
+  min_action_threshold: 0.1
+  max_action_magnitude: 5.0
+
+reward:
+  R_goal: 100.0
+  R_collision: 150.0
+  alpha: 20.0
+  beta: 0.5
+  eta: 0.1
+  gamma: 0.005
+  lambda: 0.1
+  zeta: 1.5
+  omega: 0.3
+  d_safe: 1.0
+  goal_radius: 1.0
+  catastrophic_reward_threshold: -3000.0
+  altitude_min: 1.0
+  altitude_max: 30.0
+  altitude_preferred_min: 3.0
+  altitude_preferred_max: 25.0
+  w_cohesion: 0.1
+  w_velocity_align: 0.05
+  w_ttc: 0.2
+  r_cohesion_max: 20.0
+  ttc_tau: 2.0
+  w_path_efficiency: 0.3
+  d_obs_safe: 1.0
+  w_obs: 0.5
+
+observation:
+  K: 5
+  d_ref: 100.0
+  v_ref: 10.0
+  p_ref: 100.0
+  v_ref_rel: 20.0
+  R_min: 8.0
+  R_gain: 10.0
+
+logging:
+  log_dir: "F:/Projects/PhD/Drone_Air_Sim/universal-uav-rl/data/episodes"
+  enable: true
+
+debug:
+  smoke_test: false
